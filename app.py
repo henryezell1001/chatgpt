@@ -6,7 +6,7 @@ import gradio as gr
 #openai.api_key = os.getenv("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")
 
 #if you have OpenAI API key as a string, enable the below
-openai.api_key = "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"
+openai.api_key = "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"
 
 start_sequence = "\nAI:"
 restart_sequence = "\nHuman: "
