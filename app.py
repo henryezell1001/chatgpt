@@ -3,15 +3,15 @@ import openai
 import gradio as gr
 
 #if you have OpenAI API key as an environment variable, enable the below
-#openai.api_key = os.getenv("OPENAI_API_KEY")
+#openai.api_key = os.getenv("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")
 
 #if you have OpenAI API key as a string, enable the below
-openai.api_key = ""
+openai.api_key = "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"
 
 start_sequence = "\nAI:"
 restart_sequence = "\nHuman: "
 
-prompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?\nHuman: "
+prompt = "Act as a sports game simulation program. The user will give you a hypothetical game vs two teams and you will do your best to analyze the two teams and give the user a detailed play by play until there is a winner. the last thing you will tell the user is the final score and which team won."
 
 def openai_create(prompt):
 
@@ -19,11 +19,11 @@ def openai_create(prompt):
     model="text-davinci-003",
     prompt=prompt,
     temperature=0.9,
-    max_tokens=150,
+    max_tokens=4000,
     top_p=1,
     frequency_penalty=0,
     presence_penalty=0.6,
-    stop=[" Human:", " AI:"]
+    stop=["", ""]
     )
 
     return response.choices[0].text
@@ -44,7 +44,7 @@ block = gr.Blocks()
 
 
 with block:
-    gr.Markdown("""<h1><center>Build Yo'own ChatGPT with OpenAI API & Gradio</center></h1>
+    gr.Markdown("""<h1><center>ChatGPT Free</center></h1>
     """)
     chatbot = gr.Chatbot()
     message = gr.Textbox(placeholder=prompt)
